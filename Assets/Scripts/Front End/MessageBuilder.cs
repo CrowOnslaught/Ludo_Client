@@ -42,4 +42,22 @@ public static class MessageBuilder
         l_message.Build(MessageType.joinNewGame);
         return l_message;
     }
+
+    //Message Sent when tap for roll the dice 
+    public static NetworkMessage RollDice(int roomID)
+    {
+        NetworkMessage l_message = new NetworkMessage();
+        l_message.Write(roomID);
+        l_message.Build(MessageType.rollDice);
+        return l_message;
+    }
+
+    public static NetworkMessage ChoosePiece(int tileID, int roomID)
+    {
+        NetworkMessage l_message = new NetworkMessage();
+        l_message.Write(tileID);
+        l_message.Write(roomID);
+        l_message.Build(MessageType.choosePiece);
+        return l_message;
+    }
 }

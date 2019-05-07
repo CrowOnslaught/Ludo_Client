@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 using TMPro;
 using Ludo_Client;
+using static Enums;
 
 public class BoardMNGR : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class BoardMNGR : MonoBehaviour
     public GameObject[] m_bluePieces, m_greenPieces, m_yellowPieces;
     [Header("Game Info")]
     public TileScript[] m_boardTiles;
-    public Enums.Colors m_currentTurn;
+    public Colors m_currentTurn;
     public GameObject[] m_diceFaces;
     public TextMeshProUGUI m_gameText;
     public GameObject m_blackCanvas;
@@ -20,7 +21,6 @@ public class BoardMNGR : MonoBehaviour
     [Header("Player Info")]
     public TextMeshProUGUI[] m_playerName;
     public GameObject[] m_playerTurn;
-    public bool m_isLocalTurn;
 
 
     public static BoardMNGR instance;
@@ -62,7 +62,7 @@ public class BoardMNGR : MonoBehaviour
         m_blackCanvas.SetActive(false);
     }
 
-    public void MovePiece(int originTileID, int targetTileID, Enums.Colors pieceColor)
+    public void MovePiece(int originTileID, int targetTileID, Colors pieceColor)
     {
         if (originTileID >= 0)
         {
@@ -104,27 +104,36 @@ public class BoardMNGR : MonoBehaviour
         else
             Debug.Log("INVALID MOVEMENT: " + originTileID + "|" + targetTileID);
     }
-    public void ChangeTurn(Enums.Colors turnColor, bool isLocalTurn)
+    public void ChangeTurn(Colors turnColor, bool isLocalTurn)
     {
         Debug.Log("CHANGE TURN TO " + turnColor.ToString());
-
         for (int i = 0; i < m_playerTurn.Length; i++)
             m_playerTurn[i].gameObject.SetActive(i == (int)turnColor);
 
         m_currentTurn = turnColor;
-        m_isLocalTurn = isLocalTurn;
-        m_gameText.text = "TAP TO ROLL!";
+        GameMNGR.instance.m_isLocalTurn = isLocalTurn;
+        GameMNGR.instance.m_turnState = isLocalTurn ? TurnState.RollDice : TurnState.None;
         m_gameText.gameObject.SetActive(isLocalTurn);
+        m_gameText.text = "TAP TO ROLL!";
+    }
+    public void OnDiceRolledMessage(int diceResult)
+    {
+        m_diceFaces[diceResult - 1].SetActive(true);
+    }
+    public void OnChosePieceMessage()
+    {
+        GameMNGR.instance.m_turnState = GameMNGR.instance.m_isLocalTurn ? TurnState.SelectPiece : TurnState.None;
+        m_gameText.gameObject.SetActive(GameMNGR.instance.m_isLocalTurn);
+        m_gameText.text = "SELECT A PIECE!";
     }
 
 #region TileHandlers
-    private GameObject GetPieceByColorAndTile(int tile, Enums.Colors pieceColor)
+    public GameObject GetPieceByColorAndTile(int tile, Enums.Colors pieceColor)
     {
         TileScript l_tile = GetTileIDByPositionAndColor(tile, pieceColor);
         return l_tile.m_childPieces.FirstOrDefault(x => x.name.ToLower().Contains(pieceColor.ToString()));
     }
-
-    private TileScript GetTileIDByPositionAndColor(int position, Enums.Colors color)
+    public TileScript GetTileIDByPositionAndColor(int position, Enums.Colors color)
     {
         TileScript l_tile = null;
         switch (color)
@@ -145,5 +154,33 @@ public class BoardMNGR : MonoBehaviour
 
         return l_tile;
     }
+    public TileScript GetTileByPiece(GameObject piece)
+    {
+        return m_boardTiles.FirstOrDefault(x => x.m_childPieces.Contains(piece));
+    }
+    public int GetTileIdByPieceAndColor(GameObject piece, Colors pieceColor)
+    {
+        TileScript l_tile = GetTileByPiece(piece);
+        int l_tileId = -1;
+        switch (pieceColor)
+        {
+            case Colors.red:
+                l_tileId = l_tile.m_redTileID;
+                break;
+            case Colors.blue:
+                l_tileId = l_tile.m_blueTileID;
+                break;
+            case Colors.green:
+                l_tileId = l_tile.m_greenTileID;
+                break;
+            case Colors.yellow:
+                l_tileId = l_tile.m_yellowTileID;
+                break;
+
+        }
+
+        return l_tileId;
+    }
+
 #endregion
 }

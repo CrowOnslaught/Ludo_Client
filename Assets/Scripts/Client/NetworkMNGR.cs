@@ -33,9 +33,10 @@ public class NetworkMNGR : MonoBehaviour
         StartCoroutine(ConstantPingCoroutine());
     }
 
-    public void StartMatch(List<GameMNGR.PlayerInfo> playerList)
+    public void StartMatch(int roomID, List<GameMNGR.PlayerInfo> playerList)
     {
         GameMNGR l_gameManager = GameObject.Instantiate(m_GameMngrPref).GetComponent<GameMNGR>();
+        l_gameManager.m_roomID = roomID;
         l_gameManager.SetUp(playerList);
     }
 

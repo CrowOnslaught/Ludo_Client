@@ -60,7 +60,7 @@ namespace Ludo_Client
 
         public void Execute(NetworkMessage message)
         {
-            Debug.Log("Message Received from Server of type "+ message.m_type);
+            Debug.Log("Message:"+ message.m_type);
             switch (message.m_type)
             {
                 case MessageType.welcome:
@@ -71,9 +71,9 @@ namespace Ludo_Client
                     break;
                 case MessageType.loginFailed:
                     MainMenuMNGR.instance.ShowErrorText("Wrong password or new account already exists");
-                    Debug.Log("LogIn Failed...");
                     break;
                 case MessageType.startNewGame:
+                    int l_roomID = message.ReadInt();
                     List<GameMNGR.PlayerInfo> l_allPlayerInfo = new List<GameMNGR.PlayerInfo>();
                     for (int i = 0; i < 4; i++)
                     {
@@ -90,13 +90,20 @@ namespace Ludo_Client
                         l_allPlayerInfo.Add(l_pi);
                     }
 
-                    NetworkMNGR.instance.StartMatch(l_allPlayerInfo);
+                    NetworkMNGR.instance.StartMatch(l_roomID, l_allPlayerInfo);
                     break;
                 case MessageType.changeTurn:
                     Colors l_turnColor = (Colors)message.ReadInt();
                     bool l_localTurn = message.ReadByte() > 0;
                     if (BoardMNGR.instance != null)
                         BoardMNGR.instance.ChangeTurn(l_turnColor, l_localTurn);
+                    break;
+                case MessageType.rollDice:
+                    int l_diceResult = message.ReadInt();
+                    BoardMNGR.instance.OnDiceRolledMessage(l_diceResult);
+                    break;
+                case MessageType.choosePiece:
+                    BoardMNGR.instance.OnChosePieceMessage();
                     break;
                 default:
                     Debug.LogError("Error 002: Unknown type of Message");

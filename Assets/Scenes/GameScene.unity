@@ -1030,9 +1030,10 @@ GameObject:
   m_Component:
   - component: {fileID: 320698312}
   - component: {fileID: 320698313}
+  - component: {fileID: 320698314}
   m_Layer: 0
   m_Name: Blue_Piece
-  m_TagString: Untagged
+  m_TagString: Ludo_Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1099,6 +1100,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!135 &320698314
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320698311}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.4999999
+  m_Center: {x: 0, y: -0.0000009536743, z: 0}
 --- !u!1 &321917165
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,9 +1690,10 @@ GameObject:
   m_Component:
   - component: {fileID: 494007186}
   - component: {fileID: 494007187}
+  - component: {fileID: 494007188}
   m_Layer: 0
   m_Name: Red_Piece
-  m_TagString: Untagged
+  m_TagString: Ludo_Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1745,6 +1760,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!135 &494007188
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494007185}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.4999999
+  m_Center: {x: 0, y: -0.0000019073486, z: 0}
 --- !u!1 &503674741
 GameObject:
   m_ObjectHideFlags: 0
@@ -2362,9 +2390,10 @@ GameObject:
   m_Component:
   - component: {fileID: 668210290}
   - component: {fileID: 668210291}
+  - component: {fileID: 668210292}
   m_Layer: 0
   m_Name: Yellow_Piece
-  m_TagString: Untagged
+  m_TagString: Ludo_Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2431,6 +2460,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!135 &668210292
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668210289}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.4999999
+  m_Center: {x: 0, y: -0.0000009536743, z: 0}
 --- !u!1 &671297246
 GameObject:
   m_ObjectHideFlags: 0
@@ -4419,9 +4461,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1114602675}
   - component: {fileID: 1114602676}
+  - component: {fileID: 1114602677}
   m_Layer: 0
   m_Name: Red_Piece
-  m_TagString: Untagged
+  m_TagString: Ludo_Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4488,6 +4531,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!135 &1114602677
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114602674}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.4999999
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1121226506
 GameObject:
   m_ObjectHideFlags: 0
@@ -4547,9 +4603,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1123432712}
   - component: {fileID: 1123432713}
+  - component: {fileID: 1123432714}
   m_Layer: 0
   m_Name: Red_Piece
-  m_TagString: Untagged
+  m_TagString: Ludo_Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4616,6 +4673,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!135 &1123432714
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123432711}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.4999999
+  m_Center: {x: 0.0000009536743, y: -0.0000019073486, z: 0}
 --- !u!1 &1123925187
 GameObject:
   m_ObjectHideFlags: 0
@@ -4626,9 +4696,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1123925188}
   - component: {fileID: 1123925189}
+  - component: {fileID: 1123925190}
   m_Layer: 0
   m_Name: Blue_Piece
-  m_TagString: Untagged
+  m_TagString: Ludo_Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4695,6 +4766,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!135 &1123925190
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123925187}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.4999999
+  m_Center: {x: 0, y: -0.0000009536743, z: 0}
 --- !u!1 &1135724008
 GameObject:
   m_ObjectHideFlags: 0
@@ -5048,9 +5132,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1214919901}
   - component: {fileID: 1214919902}
+  - component: {fileID: 1214919903}
   m_Layer: 0
   m_Name: Red_Piece
-  m_TagString: Untagged
+  m_TagString: Ludo_Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5117,6 +5202,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!135 &1214919903
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214919900}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.4999999
+  m_Center: {x: 0.0000009536743, y: -0.0000009536743, z: 0}
 --- !u!1 &1256237388
 GameObject:
   m_ObjectHideFlags: 0
@@ -5796,9 +5894,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1358085236}
   - component: {fileID: 1358085237}
+  - component: {fileID: 1358085238}
   m_Layer: 0
   m_Name: Green_Piece
-  m_TagString: Untagged
+  m_TagString: Ludo_Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5865,6 +5964,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!135 &1358085238
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358085235}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.4999999
+  m_Center: {x: 0.0000009536743, y: 0, z: 0}
 --- !u!1 &1381842261
 GameObject:
   m_ObjectHideFlags: 0
@@ -6022,9 +6134,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1402009390}
   - component: {fileID: 1402009389}
+  - component: {fileID: 1402009391}
   m_Layer: 0
   m_Name: Yellow_Piece
-  m_TagString: Untagged
+  m_TagString: Ludo_Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6091,6 +6204,19 @@ Transform:
   m_Father: {fileID: 252325715}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1402009391
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402009388}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.4999999
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1405117692
 GameObject:
   m_ObjectHideFlags: 0
@@ -7525,9 +7651,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1721434187}
   - component: {fileID: 1721434188}
+  - component: {fileID: 1721434189}
   m_Layer: 0
   m_Name: Blue_Piece
-  m_TagString: Untagged
+  m_TagString: Ludo_Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7594,6 +7721,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!135 &1721434189
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721434186}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.4999999
+  m_Center: {x: 0.0000019073486, y: -0.0000019073486, z: 0}
 --- !u!1 &1723971424
 GameObject:
   m_ObjectHideFlags: 0
@@ -7686,9 +7826,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1764753596}
   - component: {fileID: 1764753597}
+  - component: {fileID: 1764753598}
   m_Layer: 0
   m_Name: Yellow_Piece
-  m_TagString: Untagged
+  m_TagString: Ludo_Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7755,6 +7896,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!135 &1764753598
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764753595}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.4999999
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1769834843
 GameObject:
   m_ObjectHideFlags: 0
@@ -8433,9 +8587,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1869379928}
   - component: {fileID: 1869379929}
+  - component: {fileID: 1869379930}
   m_Layer: 0
   m_Name: Blue_Piece
-  m_TagString: Untagged
+  m_TagString: Ludo_Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8502,6 +8657,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!135 &1869379930
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869379927}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.4999999
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1878103485
 GameObject:
   m_ObjectHideFlags: 0
@@ -8937,9 +9105,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2008776308}
   - component: {fileID: 2008776309}
+  - component: {fileID: 2008776310}
   m_Layer: 0
   m_Name: Green_Piece
-  m_TagString: Untagged
+  m_TagString: Ludo_Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9006,6 +9175,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!135 &2008776310
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2008776307}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.4999999
+  m_Center: {x: 0.0000019073486, y: 0, z: 0}
 --- !u!1 &2016127875
 GameObject:
   m_ObjectHideFlags: 0
@@ -9114,9 +9296,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2037019647}
   - component: {fileID: 2037019648}
+  - component: {fileID: 2037019649}
   m_Layer: 0
   m_Name: Green_Piece
-  m_TagString: Untagged
+  m_TagString: Ludo_Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9183,6 +9366,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!135 &2037019649
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037019646}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.4999999
+  m_Center: {x: 0.0000019073486, y: 0, z: 0}
 --- !u!1 &2039614031
 GameObject:
   m_ObjectHideFlags: 0
@@ -9193,9 +9389,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2039614032}
   - component: {fileID: 2039614033}
+  - component: {fileID: 2039614034}
   m_Layer: 0
   m_Name: Green_Piece
-  m_TagString: Untagged
+  m_TagString: Ludo_Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9262,6 +9459,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!135 &2039614034
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039614031}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.4999999
+  m_Center: {x: 0.0000009536743, y: 0, z: 0}
 --- !u!1 &2039940471
 GameObject:
   m_ObjectHideFlags: 0
@@ -9370,9 +9580,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2052588546}
   - component: {fileID: 2052588547}
+  - component: {fileID: 2052588548}
   m_Layer: 0
   m_Name: Yellow_Piece
-  m_TagString: Untagged
+  m_TagString: Ludo_Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9439,6 +9650,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!135 &2052588548
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052588545}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.4999999
+  m_Center: {x: 0.0000019073486, y: 0, z: 0}
 --- !u!1 &2059625731
 GameObject:
   m_ObjectHideFlags: 0
