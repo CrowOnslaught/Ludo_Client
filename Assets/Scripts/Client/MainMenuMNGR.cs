@@ -9,8 +9,9 @@ using TMPro;
 public class MainMenuMNGR : MonoBehaviour
 {
 
-    [SerializeField] private GameObject m_LoginPanel = null;
-    [SerializeField] private GameObject m_MenuPanel = null;
+    [SerializeField] private GameObject m_loginPanel = null;
+    [SerializeField] private GameObject m_menuPanel = null;
+    [SerializeField] private GameObject m_queuePanel = null;
     public TMP_InputField m_userNameInput;
     public TMP_InputField m_passwordInput;
     public TextMeshProUGUI m_errorText;
@@ -23,28 +24,44 @@ public class MainMenuMNGR : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            SetUp();
         }
         else if(instance != this)
             Destroy(this.gameObject);
         
     }
 
-
-    #region PanelControllers
-    void Start()
+    private void SetUp()
     {
         ChangeToLoginPanel();
         m_network = NetworkMNGR.instance;
+
+        Screen.SetResolution(540, 960, false);
     }
+
+    #region PanelControllers
+
+
     public void ChangeToMenuPanel()
     {
-        m_LoginPanel.SetActive(false);
-        m_MenuPanel.SetActive(true);
+        m_loginPanel.SetActive(false);
+        m_queuePanel.SetActive(false);
+
+        m_menuPanel.SetActive(true);
     }
     public void ChangeToLoginPanel()
     {
-        m_LoginPanel.SetActive(true);
-        m_MenuPanel.SetActive(false);
+        m_queuePanel.SetActive(false);
+        m_menuPanel.SetActive(false);
+
+        m_loginPanel.SetActive(true);
+    }
+    public void ChangeToQueuePanel()
+    {
+        m_loginPanel.SetActive(false);
+        m_menuPanel.SetActive(false);
+
+        m_queuePanel.SetActive(true);
     }
 
     public void ShowErrorText(string text)
@@ -70,10 +87,14 @@ public class MainMenuMNGR : MonoBehaviour
         {
             m_network.StartCoroutines();
         }
+        else
+            ShowErrorText("Could connect to the server. Please try again");
     }
 
     public void OnJoinNewGameButton()
     {
+        ChangeToQueuePanel();
+
         NetworkMessage l_message = MessageBuilder.JoinNewGame();
         m_network.m_networkConnection.m_client.Send(l_message);
     }
@@ -81,6 +102,14 @@ public class MainMenuMNGR : MonoBehaviour
     public void OnQuitButton()
     {
         Application.Quit();
+    }
+
+    public void OnQuitQueueButton()
+    {
+        ChangeToMenuPanel();
+
+        NetworkMessage l_message = MessageBuilder.QuitQueue();
+        m_network.m_networkConnection.m_client.Send(l_message);
     }
     #endregion
 

@@ -41,9 +41,7 @@ public class GameMNGR : MonoBehaviour
 
         m_allPlayersInfo = new PlayerInfo[playerList.Count];
         for (int i = 0; i < playerList.Count; i++)
-        {
             m_allPlayersInfo[i] = playerList[i];
-        }
 
         Debug.Log(AllPlayersToString());
         SceneManager.LoadScene("GameScene");
@@ -51,6 +49,9 @@ public class GameMNGR : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            m_localClient.CloseClient();
+
         if (!m_isLocalTurn)
             return;
 
@@ -58,14 +59,10 @@ public class GameMNGR : MonoBehaviour
         {
             Touch l_touch = Input.GetTouch(0);
             if (l_touch.phase == TouchPhase.Began)
-            {
                 PressScreen(l_touch.position);
-            }
         }
         else if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
             PressScreen(Input.mousePosition);
-        }
     }
     private void PressScreen(Vector3 clickPos)
     {
@@ -84,18 +81,17 @@ public class GameMNGR : MonoBehaviour
                     GameObject l_hitObject = hit.collider.gameObject;
                     Debug.Log(l_hitObject.name);
                     if (l_hitObject.CompareTag("Ludo_Piece"))
-                    {
                         if (l_hitObject.name.ToLower().Contains(BoardMNGR.instance.m_currentTurn.ToString()))
-                        {
-                            NetworkMessage l_message2 = MessageBuilder.ChoosePiece(BoardMNGR.instance.GetTileIdByPieceAndColor(l_hitObject, BoardMNGR.instance.m_currentTurn), m_roomID);
+                        { 
+                            NetworkMessage l_message2 = MessageBuilder.ChoosePiece(m_roomID, BoardMNGR.instance.GetTileIdByPieceAndColor(l_hitObject, BoardMNGR.instance.m_currentTurn));
                             NetworkMNGR.instance.m_networkConnection.Send(l_message2);
+
+                            m_turnState = TurnState.None;
+                            BoardMNGR.instance.m_gameText.text = "";
                         }
-                    }
                 }
                 else
-                {
                     Debug.Log("RAYCAST DIDNT HIT D:");
-                }
                 break;
             case TurnState.None:
                 break;

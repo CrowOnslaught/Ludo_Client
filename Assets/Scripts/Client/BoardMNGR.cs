@@ -97,6 +97,9 @@ public class BoardMNGR : MonoBehaviour
                         Transform l_pieceTrans = l_targetTile.m_childPieces[i].transform;
                         l_pieceTrans.localPosition = Vector3.zero + Vector3.right * (-0.2f + 0.4f * i) + Vector3.up * (i%2==0?0.3f : -0.3f);
                     }
+
+                if(targetTileID == 72)
+                    Destroy(l_selectedPiece.GetComponent<SphereCollider>());
             }
             else
                 Debug.Log("PIECE NOT FOUND");
@@ -109,6 +112,9 @@ public class BoardMNGR : MonoBehaviour
         Debug.Log("CHANGE TURN TO " + turnColor.ToString());
         for (int i = 0; i < m_playerTurn.Length; i++)
             m_playerTurn[i].gameObject.SetActive(i == (int)turnColor);
+
+        for (int i = 0; i < m_diceFaces.Length; i++)
+            m_diceFaces[i].SetActive(false);
 
         m_currentTurn = turnColor;
         GameMNGR.instance.m_isLocalTurn = isLocalTurn;

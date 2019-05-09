@@ -43,6 +43,14 @@ public static class MessageBuilder
         return l_message;
     }
 
+    public static NetworkMessage QuitQueue()
+    {
+        NetworkMessage l_message = new NetworkMessage();
+
+        l_message.Build(MessageType.quitQueue);
+        return l_message;
+    }
+
     //Message Sent when tap for roll the dice 
     public static NetworkMessage RollDice(int roomID)
     {
@@ -52,11 +60,11 @@ public static class MessageBuilder
         return l_message;
     }
 
-    public static NetworkMessage ChoosePiece(int tileID, int roomID)
+    public static NetworkMessage ChoosePiece(int roomID, int tileID)
     {
         NetworkMessage l_message = new NetworkMessage();
-        l_message.Write(tileID);
         l_message.Write(roomID);
+        l_message.Write(tileID);
         l_message.Build(MessageType.choosePiece);
         return l_message;
     }

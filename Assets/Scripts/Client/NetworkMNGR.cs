@@ -49,7 +49,7 @@ public class NetworkMNGR : MonoBehaviour
             {
                 m_networkConnection.m_client.Reading();
             }
-            yield return new WaitForEndOfFrame();
+            yield return null;
         }
     }
     private IEnumerator ConstantPingCoroutine()

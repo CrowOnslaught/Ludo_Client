@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static Enums;
 
 namespace Ludo_Client
@@ -20,7 +21,7 @@ namespace Ludo_Client
                 m_clientStream = m_tcpClient.GetStream(); //Canal de entrada de datos
             }
             else
-                Close();
+                CloseClient();
         }
 
         public void Reading() //Lectura de paquetes
@@ -38,7 +39,7 @@ namespace Ludo_Client
             }
         }
 
-        public void Send(NetworkMessage message)
+        public void Send(NetworkMessage message) //Enviar paquete
         {
             byte[] l_messageSize;
             byte[] l_messageResult = new byte[message.m_raw.Length + 4];
@@ -53,12 +54,12 @@ namespace Ludo_Client
             }
             catch
             {
-                Close();
+                CloseClient();
                 Debug.Log("Error 001: Sending Message Error");
             }
         }
 
-        public void Execute(NetworkMessage message)
+        public void Execute(NetworkMessage message) //Ejecutar paquete recivido
         {
             Debug.Log("Message:"+ message.m_type);
             switch (message.m_type)
@@ -74,6 +75,7 @@ namespace Ludo_Client
                     break;
                 case MessageType.startNewGame:
                     int l_roomID = message.ReadInt();
+                    Debug.Log("Recieved GameID:" + l_roomID);
                     List<GameMNGR.PlayerInfo> l_allPlayerInfo = new List<GameMNGR.PlayerInfo>();
                     for (int i = 0; i < 4; i++)
                     {
@@ -105,15 +107,29 @@ namespace Ludo_Client
                 case MessageType.choosePiece:
                     BoardMNGR.instance.OnChosePieceMessage();
                     break;
+                case MessageType.movePiece:
+                    Colors l_color = (Colors)message.ReadInt();
+                    int l_originID = message.ReadInt();
+                    int l_destID = message.ReadInt();
+
+                    BoardMNGR.instance.MovePiece(l_originID, l_destID, l_color);
+                    break;
                 default:
                     Debug.LogError("Error 002: Unknown type of Message");
                     break;
             }
         }
 
-        private void Close()
+        public void CloseClient()
         {
-            MainMenuMNGR.instance.ChangeToLoginPanel();
+            if (SceneManager.GetActiveScene().buildIndex != 0)
+                SceneManager.LoadScene(0);
+            else
+                MainMenuMNGR.instance.ChangeToLoginPanel();
+        }
+
+        private void Close()
+        { 
             m_tcpClient.Close();
         }
     }

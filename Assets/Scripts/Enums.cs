@@ -20,6 +20,7 @@ public static class Enums
         movePiece = 0x07,
         rollDice = 0x08,
         choosePiece = 0x09,
+        quitQueue = 0x10,
     }
 
 }
