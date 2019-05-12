@@ -21,7 +21,7 @@ namespace Ludo_Client
 
         NetworkStream m_stream;
         Thread m_readThread;
-        int m_readInterval = 20;
+        int m_readInterval = 500;
 
         public bool m_isConnected { get { return m_state == ConnectionState.Connected; } }
 
