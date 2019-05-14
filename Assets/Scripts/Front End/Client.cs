@@ -114,6 +114,9 @@ namespace Ludo_Client
 
                     BoardMNGR.instance.MovePiece(l_originID, l_destID, l_color);
                     break;
+                case MessageType.currentGames:
+                    MainMenuMNGR.instance.SetUpCurrentGameButtons(message);
+                    break;
                 default:
                     Debug.LogError("Error 002: Unknown type of Message");
                     break;

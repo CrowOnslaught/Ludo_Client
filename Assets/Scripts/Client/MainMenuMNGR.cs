@@ -12,9 +12,14 @@ public class MainMenuMNGR : MonoBehaviour
     [SerializeField] private GameObject m_loginPanel = null;
     [SerializeField] private GameObject m_menuPanel = null;
     [SerializeField] private GameObject m_queuePanel = null;
+    [SerializeField] private GameObject m_scrollContainer = null;
+
     public TMP_InputField m_userNameInput;
     public TMP_InputField m_passwordInput;
     public TextMeshProUGUI m_errorText;
+
+    public GameObject m_buttonPref;
+
     private NetworkMNGR m_network;
 
     public static MainMenuMNGR instance;
@@ -36,7 +41,19 @@ public class MainMenuMNGR : MonoBehaviour
         ChangeToLoginPanel();
         m_network = NetworkMNGR.instance;
 
+#if UNITY_STANDALONE_WIN
         Screen.SetResolution(540, 960, false);
+#endif
+    }
+
+    public void SetUpCurrentGameButtons(NetworkMessage message)
+    {
+        int l_amount = message.ReadInt();
+        for (int i = 0; i < l_amount; i++)
+        {
+            GameObject l_button = GameObject.Instantiate(m_buttonPref, m_scrollContainer.transform);
+            l_button.GetComponent<RejoinGameButton>().SetUp(message.ReadInt(), message.ReadByte() > 0, message.ReadString(), message.ReadString(), message.ReadString());
+        }
     }
 
     #region PanelControllers

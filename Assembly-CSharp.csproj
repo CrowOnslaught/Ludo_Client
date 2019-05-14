@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\RejoinGameButton.cs" />
     <Compile Include="Assets\Scripts\Client\BoardMNGR.cs" />
     <Compile Include="Assets\Scripts\Client\GameMNGR.cs" />
     <Compile Include="Assets\Scripts\Client\MainMenuMNGR.cs" />
