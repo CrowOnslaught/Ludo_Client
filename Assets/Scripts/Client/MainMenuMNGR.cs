@@ -87,6 +87,13 @@ public class MainMenuMNGR : MonoBehaviour
         m_errorText.gameObject.SetActive(true);
     }
 
+    public void HideAllPanels()
+    {
+        m_queuePanel.SetActive(false);
+        m_menuPanel.SetActive(false);
+        m_loginPanel.SetActive(false);
+    }
+
     #endregion
 
     #region OnButtonPress
@@ -106,6 +113,14 @@ public class MainMenuMNGR : MonoBehaviour
         }
         else
             ShowErrorText("Could connect to the server. Please try again");
+    }
+
+    public void OnRefreshButton()
+    {
+        for (int i = 0; i < m_scrollContainer.transform.childCount; i++)
+            Destroy(m_scrollContainer.transform.GetChild(i).gameObject);
+
+        NetworkMNGR.instance.m_networkConnection.Send(MessageBuilder.RefreshCurrentGames());
     }
 
     public void OnJoinNewGameButton()

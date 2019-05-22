@@ -68,4 +68,18 @@ public static class MessageBuilder
         l_message.Build(MessageType.choosePiece);
         return l_message;
     }
+
+    public static NetworkMessage RejoinGame(int roomID)
+    {
+        NetworkMessage l_message = new NetworkMessage();
+        l_message.Write(roomID);
+        l_message.Build(MessageType.rejoinGame);
+        return l_message;
+    }
+    public static NetworkMessage RefreshCurrentGames()
+    {
+        NetworkMessage l_message = new NetworkMessage();
+        l_message.Build(MessageType.refreshCurrentGames);
+        return l_message;
+    }
 }

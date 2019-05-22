@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Ludo_Client;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -9,11 +10,14 @@ public class RejoinGameButton : MonoBehaviour
     [SerializeField] private TextMeshProUGUI m_player2NameText = null;
     [SerializeField] private TextMeshProUGUI m_player3NameText = null;
     [SerializeField] private TextMeshProUGUI m_player4NameText = null;
-    private int m_roomID = -1;
+    [SerializeField] private int m_roomID = -1;
 
     public void OnPress()
     {
         //Send Message To Server
+        NetworkMNGR.instance.m_networkConnection.Send(MessageBuilder.RejoinGame(m_roomID));
+
+        MainMenuMNGR.instance.HideAllPanels();
     }
 
     public void SetUp(int roomID, bool currentTurn, string player2, string player3, string player4)

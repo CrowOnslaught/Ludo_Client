@@ -48,8 +48,7 @@ namespace Ludo_Client
 
                 m_currentPackageID = 0;
 
-                NetworkMessage l_message = MessageBuilder.LogIn(MainMenuMNGR.instance.m_userNameInput.text, MainMenuMNGR.instance.m_passwordInput.text);
-                Send(l_message);
+                Send(MessageBuilder.LogIn(MainMenuMNGR.instance.m_userNameInput.text, MainMenuMNGR.instance.m_passwordInput.text));
             }
             catch
             {

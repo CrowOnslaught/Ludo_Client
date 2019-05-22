@@ -69,8 +69,7 @@ public class GameMNGR : MonoBehaviour
         switch (m_turnState)
         {
             case TurnState.RollDice:
-                NetworkMessage l_message = MessageBuilder.RollDice(m_roomID);
-                NetworkMNGR.instance.m_networkConnection.Send(l_message);
+                NetworkMNGR.instance.m_networkConnection.Send(MessageBuilder.RollDice(m_roomID));
                 m_turnState = TurnState.None;
                 BoardMNGR.instance.m_gameText.text = "";
                 break;
@@ -83,8 +82,8 @@ public class GameMNGR : MonoBehaviour
                     if (l_hitObject.CompareTag("Ludo_Piece"))
                         if (l_hitObject.name.ToLower().Contains(BoardMNGR.instance.m_currentTurn.ToString()))
                         { 
-                            NetworkMessage l_message2 = MessageBuilder.ChoosePiece(m_roomID, BoardMNGR.instance.GetTileIdByPieceAndColor(l_hitObject, BoardMNGR.instance.m_currentTurn));
-                            NetworkMNGR.instance.m_networkConnection.Send(l_message2);
+                            NetworkMessage l_message = MessageBuilder.ChoosePiece(m_roomID, BoardMNGR.instance.GetTileIdByPieceAndColor(l_hitObject, BoardMNGR.instance.m_currentTurn));
+                            NetworkMNGR.instance.m_networkConnection.Send(l_message);
 
                             m_turnState = TurnState.None;
                             BoardMNGR.instance.m_gameText.text = "";
