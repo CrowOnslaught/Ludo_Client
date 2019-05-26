@@ -47,6 +47,13 @@ public class GameMNGR : MonoBehaviour
         SceneManager.LoadScene("GameScene");
     }
 
+    private void EndMatch()
+    {
+        m_turnState = TurnState.None;
+        SceneManager.LoadScene("MainMenuScene");
+        Destroy(this.gameObject);
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -91,6 +98,9 @@ public class GameMNGR : MonoBehaviour
                 }
                 else
                     Debug.Log("RAYCAST DIDNT HIT D:");
+                break;
+            case TurnState.MatchEnded:
+                EndMatch();
                 break;
             case TurnState.None:
                 break;

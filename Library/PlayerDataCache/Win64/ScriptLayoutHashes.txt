@@ -1,6 +1,6 @@
 Win64
 PlayerPath?
-D:/Ludo-Client/Ludo_Client_Build/Windows/Ludo_Client.exe
+D:/Ludo-Client/Ludo_Client_Build/Windows/Onslaught Ludo.exe
 SceneListBegin?
 Assets/Scenes/MainMenuScene.unity
 Assets/Scenes/GameScene.unity
@@ -22,7 +22,7 @@ e1bbf0ab858085e38fae6b12ebbdcd35 UnityEngine.Timeline.dll:UnityEngine.Timeline.P
 e785e83073bdd4088138ab22d4d32115 Assembly-CSharp.dll:.GameMNGR
 e7a73f5f78ba6445195ec23b74a1ce2d Unity.TextMeshPro.dll:TMPro.TMP_ScrollbarEventHandler
 30fcde49c839159b4aac38469b5d8360 Assembly-CSharp.dll:.MainMenuMNGR
-8f629fcd2222c205f63ac7eed0044c6d Assembly-CSharp.dll:.NetworkMNGR
+c21625450ffcf4d3a3114eba3251bc22 Assembly-CSharp.dll:.NetworkMNGR
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:TMPro.TMP_PhoneNumberValidator
 cf9f5cf2c3145a37ac07f00e50e460f9 UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput

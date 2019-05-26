@@ -13,6 +13,11 @@ public class NetworkMNGR : MonoBehaviour
     public NetworkConnection m_networkConnection;
     [SerializeField]private GameObject m_GameMngrPref = null;
 
+    public string m_connectionIp;
+    //Local: 127.0.1
+    //MI PC: 192.168.1.49
+    //Release: ---.---.-.--
+
     public static NetworkMNGR instance;
 
     private void Awake()

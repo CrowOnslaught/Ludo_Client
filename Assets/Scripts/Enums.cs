@@ -6,7 +6,7 @@ public static class Enums
 {
     public enum Colors {red = 0, blue, green, yellow }
     public enum ConnectionState { Disconnected, Connecting, Connected }
-    public enum TurnState {RollDice, SelectPiece, None }
+    public enum TurnState {RollDice, SelectPiece, MatchEnded, None }
 
     public enum MessageType : byte
     {
@@ -26,5 +26,4 @@ public static class Enums
         rejoinGame = 0x13,
         refreshCurrentGames = 0x14,
     }
-
 }

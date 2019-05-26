@@ -21,11 +21,11 @@ namespace Ludo_Client
 
         NetworkStream m_stream;
         Thread m_readThread;
-        int m_readInterval = 500;
+        int m_readInterval = 200;
 
         public bool m_isConnected { get { return m_state == ConnectionState.Connected; } }
 
-        internal NetworkConnection(IPAddress ip, int port)
+        internal NetworkConnection(string ip, int port)
         {
             IAsyncResult l_connection = m_TcpClient.BeginConnect(ip, port, OnConnected, null);
             m_state = ConnectionState.Connecting;

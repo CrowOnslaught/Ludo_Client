@@ -69,6 +69,7 @@ namespace Ludo_Client
                 case MessageType.logIn:
                     Debug.Log("LogIn success!");
                     MainMenuMNGR.instance.ChangeToMenuPanel();
+                    MainMenuMNGR.instance.m_scoreText.text = message.ReadInt().ToString();
                     break;
                 case MessageType.loginFailed:
                     MainMenuMNGR.instance.ShowErrorText("Wrong password or new account already exists");
@@ -117,6 +118,9 @@ namespace Ludo_Client
                 case MessageType.currentGames:
                     MainMenuMNGR.instance.SetUpCurrentGameButtons(message);
                     break;
+                case MessageType.endMatch:
+                    int l_position = message.ReadInt();
+                    break;
                 default:
                     Debug.LogError("Error 002: Unknown type of Message");
                     break;
@@ -129,6 +133,8 @@ namespace Ludo_Client
                 SceneManager.LoadScene(0);
             else
                 MainMenuMNGR.instance.ChangeToLoginPanel();
+
+            NetworkMNGR.instance.m_networkConnection = null;
         }
 
         private void Close()

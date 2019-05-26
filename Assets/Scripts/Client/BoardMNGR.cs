@@ -132,6 +132,11 @@ public class BoardMNGR : MonoBehaviour
         m_gameText.gameObject.SetActive(GameMNGR.instance.m_isLocalTurn);
         m_gameText.text = "SELECT A PIECE!";
     }
+    public void OnMatchEndMessage(int position)
+    {
+        GameMNGR.instance.m_turnState = TurnState.MatchEnded;
+        m_gameText.text = "GAME ENDED!\n your position: #"+position+"\n you won " + (4-position) + " points";
+    }
 
 #region TileHandlers
     public GameObject GetPieceByColorAndTile(int tile, Enums.Colors pieceColor)

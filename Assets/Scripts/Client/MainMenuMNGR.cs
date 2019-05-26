@@ -9,16 +9,23 @@ using TMPro;
 public class MainMenuMNGR : MonoBehaviour
 {
 
+    [Header("Containers")]
     [SerializeField] private GameObject m_loginPanel = null;
     [SerializeField] private GameObject m_menuPanel = null;
     [SerializeField] private GameObject m_queuePanel = null;
-    [SerializeField] private GameObject m_scrollContainer = null;
+    [SerializeField] private GameObject m_rankingPanel = null;
+    [SerializeField] private GameObject m_rejoinGameScrollContainer = null;
+    [SerializeField] private GameObject m_rankingScrollContainer = null;
 
+    [Header("Texts")]
     public TMP_InputField m_userNameInput;
     public TMP_InputField m_passwordInput;
     public TextMeshProUGUI m_errorText;
+    public TextMeshProUGUI m_scoreText;
 
+    [Header("Prefabs")]
     public GameObject m_buttonPref;
+    public GameObject m_rankingContainerPref;
 
     private NetworkMNGR m_network;
 
@@ -51,7 +58,7 @@ public class MainMenuMNGR : MonoBehaviour
         int l_amount = message.ReadInt();
         for (int i = 0; i < l_amount; i++)
         {
-            GameObject l_button = GameObject.Instantiate(m_buttonPref, m_scrollContainer.transform);
+            GameObject l_button = GameObject.Instantiate(m_buttonPref, m_rejoinGameScrollContainer.transform);
             l_button.GetComponent<RejoinGameButton>().SetUp(message.ReadInt(), message.ReadByte() > 0, message.ReadString(), message.ReadString(), message.ReadString());
         }
     }
@@ -63,6 +70,7 @@ public class MainMenuMNGR : MonoBehaviour
     {
         m_loginPanel.SetActive(false);
         m_queuePanel.SetActive(false);
+        m_rankingPanel.SetActive(false);
 
         m_menuPanel.SetActive(true);
     }
@@ -70,6 +78,8 @@ public class MainMenuMNGR : MonoBehaviour
     {
         m_queuePanel.SetActive(false);
         m_menuPanel.SetActive(false);
+        m_rankingPanel.SetActive(false);
+
 
         m_loginPanel.SetActive(true);
     }
@@ -77,8 +87,19 @@ public class MainMenuMNGR : MonoBehaviour
     {
         m_loginPanel.SetActive(false);
         m_menuPanel.SetActive(false);
+        m_rankingPanel.SetActive(false);
+
 
         m_queuePanel.SetActive(true);
+    }
+
+    public void ChangeToRankingPanel()
+    {
+        m_loginPanel.SetActive(false);
+        m_menuPanel.SetActive(false);
+        m_queuePanel.SetActive(false);
+
+        m_rankingPanel.SetActive(true);
     }
 
     public void ShowErrorText(string text)
@@ -105,7 +126,7 @@ public class MainMenuMNGR : MonoBehaviour
         if (m_userNameInput.text == string.Empty || m_passwordInput.text == string.Empty || m_userNameInput.text == null || m_passwordInput.text == null)
             return;
 
-        m_network.m_networkConnection = new NetworkConnection(IPAddress.Loopback, 8130);
+        m_network.m_networkConnection = new NetworkConnection(m_network.m_connectionIp, 8130);
 
         if (m_network.m_networkConnection != null)
         {
@@ -117,8 +138,8 @@ public class MainMenuMNGR : MonoBehaviour
 
     public void OnRefreshButton()
     {
-        for (int i = 0; i < m_scrollContainer.transform.childCount; i++)
-            Destroy(m_scrollContainer.transform.GetChild(i).gameObject);
+        for (int i = 0; i < m_rejoinGameScrollContainer.transform.childCount; i++)
+            Destroy(m_rejoinGameScrollContainer.transform.GetChild(i).gameObject);
 
         NetworkMNGR.instance.m_networkConnection.Send(MessageBuilder.RefreshCurrentGames());
     }
