@@ -82,4 +82,11 @@ public static class MessageBuilder
         l_message.Build(MessageType.refreshCurrentGames);
         return l_message;
     }
+
+    public static NetworkMessage Ranking()
+    {
+        NetworkMessage l_message = new NetworkMessage();
+        l_message.Build(MessageType.ranking);
+        return l_message;
+    }
 }

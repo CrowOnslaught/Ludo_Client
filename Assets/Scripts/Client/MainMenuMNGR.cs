@@ -20,6 +20,7 @@ public class MainMenuMNGR : MonoBehaviour
     [Header("Texts")]
     public TMP_InputField m_userNameInput;
     public TMP_InputField m_passwordInput;
+    public TMP_InputField m_ipInput;
     public TextMeshProUGUI m_errorText;
     public TextMeshProUGUI m_scoreText;
 
@@ -48,6 +49,8 @@ public class MainMenuMNGR : MonoBehaviour
         ChangeToLoginPanel();
         m_network = NetworkMNGR.instance;
 
+        m_ipInput.placeholder.GetComponent<TextMeshProUGUI>().text = m_network.m_connectionIp;
+
 #if UNITY_STANDALONE_WIN
         Screen.SetResolution(540, 960, false);
 #endif
@@ -61,6 +64,22 @@ public class MainMenuMNGR : MonoBehaviour
             GameObject l_button = GameObject.Instantiate(m_buttonPref, m_rejoinGameScrollContainer.transform);
             l_button.GetComponent<RejoinGameButton>().SetUp(message.ReadInt(), message.ReadByte() > 0, message.ReadString(), message.ReadString(), message.ReadString());
         }
+    }
+
+    public void SeUpRanking(NetworkMessage message)
+    {
+        int l_amount = message.ReadInt();
+        for (int i = 0; i < l_amount; i++)
+        {
+            string l_name = message.ReadString();
+            string l_score = message.ReadString();
+            string l_pos = message.ReadString();
+
+            GameObject l_ranking = Instantiate(m_rankingContainerPref, m_rankingScrollContainer.transform);
+            l_ranking.GetComponent<RankingPlayerContainer>().SetUp(l_name, l_pos, l_score);
+        }
+
+        ChangeToRankingPanel();
     }
 
     #region PanelControllers
@@ -126,7 +145,7 @@ public class MainMenuMNGR : MonoBehaviour
         if (m_userNameInput.text == string.Empty || m_passwordInput.text == string.Empty || m_userNameInput.text == null || m_passwordInput.text == null)
             return;
 
-        m_network.m_networkConnection = new NetworkConnection(m_network.m_connectionIp, 8130);
+        m_network.m_networkConnection = new NetworkConnection(m_network.m_modifiedConnectionIp != ""? m_network.m_modifiedConnectionIp: m_network.m_connectionIp, 8130);
 
         if (m_network.m_networkConnection != null)
         {
@@ -142,6 +161,14 @@ public class MainMenuMNGR : MonoBehaviour
             Destroy(m_rejoinGameScrollContainer.transform.GetChild(i).gameObject);
 
         NetworkMNGR.instance.m_networkConnection.Send(MessageBuilder.RefreshCurrentGames());
+    }
+
+    public void OnRankingButton()
+    {
+        for (int i = 1; i < m_rankingScrollContainer.transform.childCount; i++)
+            Destroy(m_rankingScrollContainer.transform.GetChild(i).gameObject);
+
+        NetworkMNGR.instance.m_networkConnection.Send(MessageBuilder.Ranking());
     }
 
     public void OnJoinNewGameButton()

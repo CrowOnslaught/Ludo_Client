@@ -13,6 +13,7 @@ public class NetworkMNGR : MonoBehaviour
     public NetworkConnection m_networkConnection;
     [SerializeField]private GameObject m_GameMngrPref = null;
 
+    [HideInInspector]public string m_modifiedConnectionIp = "";
     public string m_connectionIp;
     //Local: 127.0.1
     //MI PC: 192.168.1.49
@@ -32,6 +33,13 @@ public class NetworkMNGR : MonoBehaviour
         
     }
 
+    public void ChangeIp()
+    {
+        string l_adress = MainMenuMNGR.instance.m_ipInput.text;
+        Debug.Log("Target Ip Changed to|" + l_adress + "|");
+        m_modifiedConnectionIp = l_adress;
+    }
+
     public void StartCoroutines()
     {
         StartCoroutine(ReadMessages());
@@ -45,7 +53,7 @@ public class NetworkMNGR : MonoBehaviour
         l_gameManager.SetUp(playerList);
     }
 
-    #region ConstantThreads
+#region ConstantThreads
     private IEnumerator ReadMessages()
     {
         while (m_networkConnection != null)
